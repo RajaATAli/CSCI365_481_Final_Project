@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Load the cleaned dataset (you can replace the path as needed)
-data_one_hot = pd.read_csv('data/processed/cleaned_diabetes_one_hot_encoding.csv')
+data_one_hot = pd.read_csv('../data/processed/cleaned_diabetes_one_hot_encoding.csv')
 
 # Splitting the data into features and target variable
 X = data_one_hot.drop(columns=['diabetes'])  # Features
