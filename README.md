@@ -13,7 +13,7 @@
 **Fig :** Number of new T2DM, and incidence rate of T2DM across Brazil, China, India, Russian Federation, and South Africa between 1990 and 2019
 - Data was [sourced from kaggle](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset)
 
-## Data Overview
+## Exploratory Data Analysis
 - Features
   - **Numerical**: Age, BMI, HbA1c level, Blood Glucose Level
    - **Categorical**: Gender, Hypertension, Heart Disease, Smoking History
@@ -98,19 +98,36 @@
    - The dataset contained categorical variables that needed to be encoded for the machine learning models
    - **Solution**: We used the `One-Hot Encoding` technique to convert categorical variables into numerical form
 
-4. Ambiguities in smoking history categories (e.g., `"ever"`)
-    - Not Current = Refers to individuals who used to smoke but are currently not smoking
-    - Former = Individuals who used to smoke but are currently not smoking AND have been abstinent for a longer period of time than those in the "not current" category.
-    - Current = Indicates that the individual is currently a smoker at the time of data collection. It means that the person is actively smoking or has reported smoking recently.
-    - Ever = Represents individuals who have ever smoked in their lifetime, regardless of their current smoking status (e.g. Current and Former). It includes individuals who are currently smoking ("Current"), as well as those who have previously smoked but may have quit at the time of data collection ("Former").
-    - The "ever" category was ambiguous as it could include both current and former smokers, making it challenging to interpret the data accurately. Therefore, we decided to drop this category from the analysis.
+![one hot encoding](img/image13.png)
+
+**Fig :** Code Snippet for One-Hot Encoding
+
+4. **Ambiguities in smoking history categories (e.g., `"ever"`)**
+    - `Not Current` = Refers to individuals who used to smoke but are currently not smoking
+    - `Former` = Individuals who used to smoke but are currently not smoking AND have been abstinent for a longer period of time than those in the "not current" category.
+    - `Current` = Indicates that the individual is currently a smoker at the time of data collection. It means that the person is actively smoking or has reported smoking recently.
+    - `Ever` = Represents individuals who have ever smoked in their lifetime, regardless of their current smoking status (e.g. Current and Former). It includes individuals who are currently smoking ("Current"), as well as those who have previously smoked but may have quit at the time of data collection ("Former").
+    - The `"ever"` category was ambiguous as it could include both current and former smokers, making it challenging to interpret the data accurately. Therefore, we decided to drop this category from the analysis.
 
 
 
-## Exploratory Data Analysis
+## Exploratory Data Analysis [Continued]
+1. **Correlation Matrix**:
+   - We analyzed the correlation between numerical features and the target variable
+   - The correlation matrix helped identify the relationship between features and the target variable
+   - **Key Insights**:
+     - Age and BMI had a positive correlation with diabetes
+     - HbA1c level and Blood Glucose level had a strong positive correlation with diabetes
+
+
+![correlation matrix](img/image12.jpeg)
+
+**Fig :** Correlation Matrix
 
 
 ## Model Selection
+
+
 
 
 ## Model Implementation and Evaluation
