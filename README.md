@@ -10,7 +10,7 @@
 
 ![study](img/image0.png)
 
-**Fig :** Number of new T2DM, and incidence rate of T2DM across Brazil, China, India, Russian Federation, and South Africa between 1990 and 2019
+**Fig 0:** Number of new T2DM, and incidence rate of T2DM across Brazil, China, India, Russian Federation, and South Africa between 1990 and 2019
 - Data was [sourced from kaggle](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset)
 
 ## Exploratory Data Analysis
@@ -30,43 +30,43 @@
 | HbA1c Level           | 100,000     | 5.53       | 1.07        | 3.50   | 4.80   | 5.80   | 6.20   | 9.00    |
 | Blood Glucose Level   | 100,000     | 138.06     | 40.71       | 80.00  | 100.00 | 140.00 | 159.00 | 300.00  |
 
-**Fig :** Data Distribution of Numerical Features
+**Fig 1:** Data Distribution of Numerical Features
 
 ![histogram of age](img/image.png)
 
-**Fig :** Histogram of Age
+**Fig 2:** Histogram of Age
 
 ![histogram of bmi](img/image2.png)
 
-**Fig :** Histogram of BMI
+**Fig 3:** Histogram of BMI
 
 ![histogram of hba1c](img/image3.png)
 
-**Fig :** Histogram of HbA1c Level
+**Fig 4:** Histogram of HbA1c Level
 
 ![histogram of blood glucose](img/image4.png)
 
-**Fig :** Histogram of Blood Glucose Level
+**Fig 5:** Histogram of Blood Glucose Level
 
 ![data distribution](img/image5.png)
 
-**Fig :** Data Distribution of Diabetic and Non-diabetic Patients
+**Fig 6:** Data Distribution of Diabetic and Non-diabetic Patients
 
 ![gender](img/image8.png)
 
-**Fig:** Data Distribution of Categorical Column `Gender`
+**Fig 7:** Data Distribution of Categorical Column `Gender`
 
 ![smoking](img/image9.png)
 
-**Fig:** Data Distribution of Categorical Column `smoking_history`
+**Fig 8:** Data Distribution of Categorical Column `smoking_history`
 
 ![hypertension](img/image10.png)
 
-**Fig:** Histogram of `hypertension`
+**Fig 9:** Histogram of `hypertension`
 
 ![heart disease](img/image11.png)
 
-**Fig:** Histogram of `heart_disease`
+**Fig 10:** Histogram of `heart_disease`
 
 
 
@@ -83,11 +83,11 @@
 
 ![boxplot of bmi](img/image6.png)
 
-**Fig :** Boxplot of BMI
+**Fig 11:** Boxplot of BMI
 
 ![class distribution](img/image7.png)
 
-**Fig :** Class Distribution Before and After Outlier Removal
+**Fig 12:** Class Distribution Before and After Outlier Removal
 
 2. **Handling Imbalanced Data**:
    - The dataset was imbalanced with a higher number of non-diabetic patients compared to diabetic patients
@@ -100,7 +100,7 @@
 
 ![one hot encoding](img/image13.png)
 
-**Fig :** Code Snippet for One-Hot Encoding
+**Fig 13:** Code Snippet for One-Hot Encoding
 
 4. **Ambiguities in smoking history categories (e.g., `"ever"`)**
     - `Not Current` = Refers to individuals who used to smoke but are currently not smoking
@@ -122,15 +122,37 @@
 
 ![correlation matrix](img/image12.jpeg)
 
-**Fig :** Correlation Matrix
+**Fig 14:** Correlation Matrix
 
 
 ## Model Selection
+1. **Decision Tree Classifier**:
+   - Decision Trees are a popular choice for classification tasks due to their interpretability and ease of implementation
+   - When tree depths are handled correctly, decision trees can provide a good balance between bias and variance and avoid overfitting
+   - Good baseline model for predicting diabetes
 
+2. **Random Forest Ensemble**:
+   - Random Forest is an ensemble learning method that combines multiple decision trees to improve the model's performance
+   - Random Forest reduces overfitting by averaging the predictions of multiple decision trees
+   - Mainly used for handling non-linear relatonships as well as feature importance
 
+3. **Support Vector Machine (SVM)**:
+   - SVM is a powerful classification algorithm that can handle both linear and non-linear data
+   - SVM is effective in high-dimensional spaces and is versatile in handling different kernel functions
+
+4. **Feedforward Neural Network (FNN) with Multiple Layer Perceptron (MLP)**:
+   - FNN is a deep learning model that consists of multiple layers of neurons
+   - FNNs are effective in capturing non-linear relationships in the data
+
+**Considerations for Model Selection**:
+- We chose these models based on their ability to handle non-linear relationships and their performance in classification tasks
+- We also made sure to select models that could handle imbalanced data effectively
+- We had to balance interpretability and performance when selecting the models
 
 
 ## Model Implementation and Evaluation
+
+
 
 
 ## Key Factors Influencing Model Performance
