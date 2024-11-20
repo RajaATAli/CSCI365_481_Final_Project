@@ -29,18 +29,23 @@
 **Fig 1**: Data Distribution of Numerical Features
 
 ![histogram of age](img/image.png)
+
 **Fig 2:** Histogram of Age
 
 ![histogram of bmi](img/image2.png)
+
 **Fig 3:** Histogram of BMI
 
 ![histogram of hba1c](img/image3.png)
+
 **Fig 4:** Histogram of HbA1c Level
 
 ![histogram of blood glucose](img/image4.png)
+
 **Fig 5:** Histogram of Blood Glucose Level
 
 ![data distribution](img/image5.png)
+
 **Fig 6:** Data Distribution of Diabetic and Non-diabetic Patients
 
 
