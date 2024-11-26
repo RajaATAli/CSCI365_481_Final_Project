@@ -151,17 +151,74 @@
 
 
 ## Model Implementation and Evaluation
+1. Random Forest
+   - Initial model might be overfitting due to class imbalance.
+   - Applied SMOTE for balancing.
+   - Hyperparameter tuning using GridSearchCV.
+2. Decision Tree
+   - Experimented with `max_depth`, `min_samples_split`, and `min_samples_leaf`.
+   - Final model selected based on optimal trade-off between bias and variance
+3. Support Vector Machine (SVM)
+   - Applied standard scaling due to sensitivity to feature scales.
+   - Experimented with different kernels (linear and rbf more specifically).
+   - Handled imbalance using SMOTE and SMOTE-Tomek
+4. FNN with MLP
+   - Used Basic Architecture at first
+   - Addressed class imbalance using SMOTE
+   - Enhanced model with batch normalization, regularization, and learning rate adjustments.
 
+![model implementation](img/image15.png)
 
+**Fig 15:** Results
 
 
 ## Key Factors Influencing Model Performance
+1. Models performed better after balancing the dataset using `SMOTE` and `SMOTE-Tomek`
+2. Adding interaction terms and transformations improved model performance. Below is a code block on what exactly we did:
+```python
+# Adding interaction terms
+# We add these interaction terms to capture the combined effects of these variables
+# For example, the risk of diabetes might be higher in individuals who have both high BMI and are older.
+Kaggle_Diabetes_Data['age_bmi_interaction'] = Kaggle_Diabetes_Data['age'] * Kaggle_Diabetes_Data['bmi']
+Kaggle_Diabetes_Data['hypertension_heart_interaction'] = Kaggle_Diabetes_Data['hypertension'] * Kaggle_Diabetes_Data['heart_disease']
+
+# Applying Transformations
+Kaggle_Diabetes_Data['log_bmi'] = np.log(Kaggle_Diabetes_Data['bmi'] + 1) # Adding 1 to avoid log(0)
+Kaggle_Diabetes_Data['sqrt_age'] = np.sqrt(Kaggle_Diabetes_Data['age'])
+```
+
+3. Optimizing parameters like `n_estimators`, `max_depth`, and learning rates during hyperparamter tuning (using `GridSearchCV`) enhanced model accuracy and ROC AUC.
+4. Neural networks captured complex patterns but required careful tuning to prevent overfitting.
+5. Standardizing features improved the performance of SVM and neural networks
+
+
+![maxdepth](img/image14.png)
+
+**Fig 16:** Impact of `max_depth` on Model Performance (Decision Tree Classifier)
+
+![training history](img/image16.png)
+![training history](img/image17.png)
+
+**Fig 17:** Training History for Multiple Layers Perceptron (MLP) Model, showing signs of neither underfitting or overfitting
 
 
 ## Interpretation of Results
+- In the Random Forest, feature importance indicated `blood_glucose_level` and `HbA1c_level` as good predictors.
+- The decision tree classifier showed something similar, with `blood_glucose_level` and `HbA1c_level` being the most important features
+
+![decision tree](img/image18.png)
+
+**Fig 18:** Decision Tree Classifier
+
+- For the FNN with MLP, despite lower accuracy after balancing, the recall and ROC AUC improved significantly, indicating better performance in predicting diabetic patients
+- SVM struggled with the high-dimensionality and imbalance without proper tuning and balancing techniques.
 
 
 ## Insights from Data and Analysis
-
+- Blood Glucose Level and HbA1c Level are strong indicators.
+- Age and BMI interactions play a significant role.
+- Proper handling of class imbalance is critical for building effective models.
+- Neural networks outperform traditional models in capturing complex patterns when properly tuned and balanced.
 
 ## Conclusion
+> Best Performing Model: Feedforward Neural Network with Multiple Layer Perceptron (MLP)
