@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, roc_auc_score, roc_curve
 import matplotlib.pyplot as plt
 
 # Load the dataset (adjust path as needed)
@@ -87,13 +87,15 @@ decision_tree = DecisionTreeClassifier(
 )
 decision_tree.fit(X_train, y_train)
 
-# Making predictions
+# Making predictions and calculating probabilities for ROC-AUC
 y_pred = decision_tree.predict(X_test)
+y_proba = decision_tree.predict_proba(X_test)[:, 1]  # Probabilities for the positive class
 
 # Evaluating the model
 accuracy = accuracy_score(y_test, y_pred)
 classification_rep = classification_report(y_test, y_pred)
 conf_matrix = confusion_matrix(y_test, y_pred)
+roc_auc = roc_auc_score(y_test, y_proba)  # Calculating the ROC-AUC score
 
 # Displaying the results
 print(f'Accuracy: {accuracy}')
@@ -101,6 +103,19 @@ print('Classification Report:')
 print(classification_rep)
 print('Confusion Matrix:')
 print(conf_matrix)
+print(f'ROC-AUC Score: {roc_auc}')
+
+# Plotting the ROC Curve
+fpr, tpr, thresholds = roc_curve(y_test, y_proba)
+plt.figure(figsize=(10, 6))
+plt.plot(fpr, tpr, label=f"Decision Tree (AUC = {roc_auc:.2f})", marker='.')
+plt.plot([0, 1], [0, 1], 'k--', label="Random Guess (AUC = 0.5)")
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.legend(loc='lower right')
+plt.grid()
+plt.show()
 
 # Visualizing the final Decision Tree
 from sklearn.tree import plot_tree
