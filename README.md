@@ -1,6 +1,7 @@
 # Predicting Diabetes Using Machine Learning and Deep Learning Models
 
 > This README acts as our **one page** presentation answering the questions as well as presenting the results of our project.
+
 > Note for TA and instructor: Some of these models were trained on the BigRed200 supercomputer, which has a lot of computational power. If you try replicating the results on your local machine, it will take a lot of time to train the models. We recommend using a machine with a good GPU or a cloud-based service like Google Colab.
 
 **Presenters**: `Raja Allmdar Tariq Ali` and `Avinash Pandey`
