@@ -154,9 +154,10 @@
 
 ## Model Implementation and Evaluation
 1. Random Forest
-   - Initial model might be overfitting due to class imbalance.
-   - Applied SMOTE for balancing.
-   - Hyperparameter tuning using GridSearchCV.
+   - Initial model might be overfitting due to class imbalance. (`numoftrees = 100`)
+   - Feature Engineering -> Interaction terms (`age and BMI & hypertension and heart disease`) and transformations (`log BMI and sqrt age`)
+   - Applied SMOTE for balancing. 
+   - Hyperparameter tuning using GridSearchCV (`max_depth [limit of each tree]` = 30, `min_samples_leaf [minimum samples required to be at a leaf node]` = 2, `min_samples_split [minimum samples required to split a node]` = 5, `n_estimators [number of trees]` = 500)
 2. Decision Tree
    - Experimented with `max_depth`, `min_samples_split`, and `min_samples_leaf`.
    - Final model selected based on optimal trade-off between bias and variance
@@ -165,9 +166,9 @@
    - Experimented with different kernels (linear and rbf more specifically).
    - Handled imbalance using SMOTE and SMOTE-Tomek
 4. FNN with MLP
-   - Used Basic Architecture at first
+   - Used Basic Architecture at first (2 hidden layers with 128 and 64 neurons) -> `ReLU activation function`
    - Addressed class imbalance using SMOTE
-   - Enhanced model with batch normalization, regularization, and learning rate adjustments.
+   - Enhanced model with batch normalization, regularization (L2 - `0.001`), and learning rate adjustments (`ReduceLROnPlateau` callback -> reduces LR by half if no improvement in 5 epochs -> converges efficiently)
 
 ![model implementation](img/image15.png)
 
